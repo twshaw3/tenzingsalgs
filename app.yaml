@@ -1,0 +1,21 @@
+application: tenzingsalgs
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /favicon\.ico
+  static_files: images/favicon.ico
+  upload: images/favicon\.ico
+  mime_type: image/vnd.microsoft.icon
+- url: /stylesheets
+  static_dir: stylesheets
+- url: /js
+  static_dir: js
+- url: /.*
+  script: blog.app
+
+libraries:
+- name: jinja2
+  version: "latest"

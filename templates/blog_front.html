@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="content">
+  {% for post in post_comments %}
+    <div class="post">
+      <div class="post-heading">
+        <a href="/{{post[0].key().id()}}" class="post-title">{{post[0].subject}}</a>
+        <div class="post-date">{{post[0].created}}</div>
+      </div>
+      <div class="post-content">{{post[0].content | safe}}</div>
+    </div>
+    {% set key = post[0].key().id() %}
+    <div class="toggle_comments" id="{{key}}"><a href="#">Show Comments</a></div>
+    <div class="comments" id="{{key}}">
+      {% for comment in post[1] %}
+        <div class="comment">
+          <table width="100%">
+            <tr>
+              <td class="comment-author">{{comment.username}}
+              <img class="gravatar" src="http://www.gravatar.com/avatar/{{comment.useremailhash}}">
+              </td>
+              <td class="comment-date">{{comment.created}}</td>
+            </tr>
+          </table>
+          <div class="comment-content">{{comment.content}}</div>
+        </div>
+      {% endfor %}
+    </div>
+    <br><br>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Tenzing's Algorithms Blog</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/blog_styles.css">
+    <link rel="shortcut icon" href="http://www.tenzingsalgs.appspot.com/favicon.ico" type="image/x-icon">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/blog.js" type="text/javascript"></script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-MML-AM_HTMLorMML-full"> </script>
+
+    <div id="navbar">
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/">About</a>
+        </li>
+        <li>
+          <a href="/">Contact</a>
+        </li>
+        <li>
+          {% if username %}
+            <span>Welcome {{username}}!</span>
+            <img class="gravatar" src="http://www.gravatar.com/avatar/{{emailhash}}">
+            <span>|</span>
+            <a href="/logout">logout</a>
+          {% else %}
+            <a href="/login">login</a>
+            <span>|</span>
+            <a href="/signup">signup</a>
+          {% endif %}
+        </ul>
+      </ul>
+    </div>
+    <a href="/" class="main-title">
+      Tenzing's Algorithms Blog
+    </a>
+  </head>
+   
+  <body>
+    {% block content %}
+    {% endblock %}
+  </body>
+
+</html>
